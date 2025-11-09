@@ -3,7 +3,7 @@ import { FC } from "react";
 interface PageProps {}
 
 const Page: FC<PageProps> = ({}) => {
-  return <div>page</div>;
+  return <div>About</div>;
 };
 
 export default Page;
