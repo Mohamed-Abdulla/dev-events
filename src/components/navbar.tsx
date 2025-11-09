@@ -16,6 +16,10 @@ interface NavbarProps {}
 
 export const Navbar: FC<NavbarProps> = ({}) => {
   const { theme } = useTheme();
+  const isDark =
+    theme === "dark" ||
+    (theme === "system" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
   return (
     <nav className="flex w-full items-center justify-between border-b p-3 backdrop-blur-sm">
       <NavigationMenu>
@@ -26,12 +30,12 @@ export const Navbar: FC<NavbarProps> = ({}) => {
                 {link.href === "/" ? (
                   <div className="flex items-center gap-x-2">
                     <Image
-                      src={`/assets/${theme === "dark" || theme !== "light" ? "logo-white" : "logo"}.svg`}
+                      src={`/assets/${isDark ? "logo-white" : "logo"}.svg`}
                       alt="Logo"
                       width={120}
                       height={30}
                     />
-                    <div className="h-6 border border-r border-r-orange-600" />
+                    <div className="h-6 border-r border-r-orange-600" />
                   </div>
                 ) : (
                   link.title
