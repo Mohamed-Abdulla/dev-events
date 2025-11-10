@@ -1,14 +1,8 @@
-"use client";
 import Image from "next/image";
 
 export const ExploreBtn = ({}) => {
   return (
-    <button
-      type="button"
-      id="explore-btn"
-      className="mx-auto mt-7"
-      onClick={() => console.log("CLICK")}
-    >
+    <button type="button" id="explore-btn" className="mx-auto mt-7">
       <a href="#events">
         Explore Events
         <Image

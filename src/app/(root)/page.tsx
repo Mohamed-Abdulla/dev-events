@@ -10,6 +10,18 @@ export default function Home() {
         Hackathons, Meetups, and Conferences, All in One Place
       </p>
       <ExploreBtn />
+
+      <div className="mt-20 space-y-7">
+        <h3>Featured Events</h3>
+
+        <ul className="events">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <li key={index} className="event-card">
+              <h4>Event Title {index + 1}</h4>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
