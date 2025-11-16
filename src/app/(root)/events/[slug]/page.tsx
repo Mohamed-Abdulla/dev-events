@@ -1,14 +1,19 @@
-import { FC } from "react";
+import EventDetails from "@/components/event-details";
+import { Suspense } from "react";
 
-interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
+const EventDetailsPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const slug = params.then((p) => p.slug);
 
-const Page: FC<PageProps> = async ({ params }) => {
-  const { slug } = await params;
-  return <main>{slug}</main>;
+  return (
+    <main>
+      <Suspense fallback={<div>Loading...</div>}>
+        <EventDetails params={slug} />
+      </Suspense>
+    </main>
+  );
 };
-
-export default Page;
+export default EventDetailsPage;
