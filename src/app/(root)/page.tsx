@@ -1,6 +1,6 @@
-import { EventCard } from "@/components/event-card";
+import { Events } from "@/components/events";
 import { ExploreBtn } from "@/components/explore-btn";
-import { events } from "@/lib/constants";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -12,17 +12,11 @@ export default function Home() {
         Hackathons, Meetups, and Conferences, All in One Place
       </p>
       <ExploreBtn />
-
       <div className="mt-20 space-y-7">
         <h3>Featured Events</h3>
-
-        <ul className="events">
-          {events.map((event, index) => (
-            <li key={index} className="event-title">
-              <EventCard {...event} />
-            </li>
-          ))}
-        </ul>
+        <Suspense fallback={<p>Loading events...</p>}>
+          <Events />
+        </Suspense>
       </div>
     </section>
   );
